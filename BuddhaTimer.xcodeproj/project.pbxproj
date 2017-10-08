@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D6634751F891A4F002D7B6D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6634741F891A4F002D7B6D /* HealthKit.framework */; };
+		1D6B2CC01F894D2D00930708 /* chime.aif in Resources */ = {isa = PBXBuildFile; fileRef = 1DD831D51F88FC13003BF129 /* chime.aif */; };
+		1DD831C41F88DAF9003BF129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD831C31F88DAF9003BF129 /* AppDelegate.swift */; };
+		1DD831C61F88DAF9003BF129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD831C51F88DAF9003BF129 /* ViewController.swift */; };
+		1DD831C91F88DAF9003BF129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD831C71F88DAF9003BF129 /* Main.storyboard */; };
+		1DD831CB1F88DAF9003BF129 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DD831CA1F88DAF9003BF129 /* Assets.xcassets */; };
+		1DD831CE1F88DAF9003BF129 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD831CC1F88DAF9003BF129 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D6634731F891A2B002D7B6D /* BuddhaTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuddhaTimer.entitlements; sourceTree = "<group>"; };
+		1D6634741F891A4F002D7B6D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		1D6B2CC21F89558500930708 /* buddha-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-120x120.png"; sourceTree = "<group>"; };
+		1D6B2CC31F89558500930708 /* buddha-180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-180x180.png"; sourceTree = "<group>"; };
+		1D6B2CC41F89558500930708 /* buddha-180x180.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buddha-180x180.psd"; sourceTree = "<group>"; };
+		1D6B2CC51F89558500930708 /* buddha-40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-40x40.png"; sourceTree = "<group>"; };
+		1D6B2CC61F89558500930708 /* buddha-58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-58x58.png"; sourceTree = "<group>"; };
+		1D6B2CC71F89558500930708 /* buddha-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-60x60.png"; sourceTree = "<group>"; };
+		1D6B2CC81F89558500930708 /* buddha-80x08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-80x08.png"; sourceTree = "<group>"; };
+		1D6B2CC91F89558500930708 /* buddha-87x87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-87x87.png"; sourceTree = "<group>"; };
+		1DD831C01F88DAF9003BF129 /* BuddhaTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddhaTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DD831C31F88DAF9003BF129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1DD831C51F88DAF9003BF129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1DD831C81F88DAF9003BF129 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1DD831CA1F88DAF9003BF129 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DD831CD1F88DAF9003BF129 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1DD831CF1F88DAF9003BF129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DD831D51F88FC13003BF129 /* chime.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = chime.aif; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DD831BD1F88DAF9003BF129 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6634751F891A4F002D7B6D /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D6634701F891A2B002D7B6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D6634741F891A4F002D7B6D /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D6B2CC11F89558500930708 /* source icons */ = {
+			isa = PBXGroup;
+			children = (
+				1D6B2CC21F89558500930708 /* buddha-120x120.png */,
+				1D6B2CC31F89558500930708 /* buddha-180x180.png */,
+				1D6B2CC41F89558500930708 /* buddha-180x180.psd */,
+				1D6B2CC51F89558500930708 /* buddha-40x40.png */,
+				1D6B2CC61F89558500930708 /* buddha-58x58.png */,
+				1D6B2CC71F89558500930708 /* buddha-60x60.png */,
+				1D6B2CC81F89558500930708 /* buddha-80x08.png */,
+				1D6B2CC91F89558500930708 /* buddha-87x87.png */,
+			);
+			path = "source icons";
+			sourceTree = "<group>";
+		};
+		1DD831B71F88DAF9003BF129 = {
+			isa = PBXGroup;
+			children = (
+				1DD831C21F88DAF9003BF129 /* BuddhaTimer */,
+				1DD831C11F88DAF9003BF129 /* Products */,
+				1D6634701F891A2B002D7B6D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1DD831C11F88DAF9003BF129 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DD831C01F88DAF9003BF129 /* BuddhaTimer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DD831C21F88DAF9003BF129 /* BuddhaTimer */ = {
+			isa = PBXGroup;
+			children = (
+				1D6634731F891A2B002D7B6D /* BuddhaTimer.entitlements */,
+				1DD831D51F88FC13003BF129 /* chime.aif */,
+				1DD831C31F88DAF9003BF129 /* AppDelegate.swift */,
+				1DD831C51F88DAF9003BF129 /* ViewController.swift */,
+				1DD831C71F88DAF9003BF129 /* Main.storyboard */,
+				1DD831CA1F88DAF9003BF129 /* Assets.xcassets */,
+				1DD831CC1F88DAF9003BF129 /* LaunchScreen.storyboard */,
+				1DD831CF1F88DAF9003BF129 /* Info.plist */,
+				1D6B2CC11F89558500930708 /* source icons */,
+			);
+			path = BuddhaTimer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DD831BF1F88DAF9003BF129 /* BuddhaTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DD831D21F88DAF9003BF129 /* Build configuration list for PBXNativeTarget "BuddhaTimer" */;
+			buildPhases = (
+				1DD831BC1F88DAF9003BF129 /* Sources */,
+				1DD831BD1F88DAF9003BF129 /* Frameworks */,
+				1DD831BE1F88DAF9003BF129 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BuddhaTimer;
+			productName = BuddhaTimer;
+			productReference = 1DD831C01F88DAF9003BF129 /* BuddhaTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DD831B81F88DAF9003BF129 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = x115;
+				TargetAttributes = {
+					1DD831BF1F88DAF9003BF129 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4Q6FK466ZZ;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1DD831BB1F88DAF9003BF129 /* Build configuration list for PBXProject "BuddhaTimer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DD831B71F88DAF9003BF129;
+			productRefGroup = 1DD831C11F88DAF9003BF129 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DD831BF1F88DAF9003BF129 /* BuddhaTimer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DD831BE1F88DAF9003BF129 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6B2CC01F894D2D00930708 /* chime.aif in Resources */,
+				1DD831CE1F88DAF9003BF129 /* LaunchScreen.storyboard in Resources */,
+				1DD831CB1F88DAF9003BF129 /* Assets.xcassets in Resources */,
+				1DD831C91F88DAF9003BF129 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DD831BC1F88DAF9003BF129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DD831C61F88DAF9003BF129 /* ViewController.swift in Sources */,
+				1DD831C41F88DAF9003BF129 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1DD831C71F88DAF9003BF129 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DD831C81F88DAF9003BF129 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1DD831CC1F88DAF9003BF129 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DD831CD1F88DAF9003BF129 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DD831D01F88DAF9003BF129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1DD831D11F88DAF9003BF129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DD831D31F88DAF9003BF129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BuddhaTimer/BuddhaTimer.entitlements;
+				DEVELOPMENT_TEAM = 4Q6FK466ZZ;
+				INFOPLIST_FILE = BuddhaTimer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-9.BuddhaTimer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1DD831D41F88DAF9003BF129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BuddhaTimer/BuddhaTimer.entitlements;
+				DEVELOPMENT_TEAM = 4Q6FK466ZZ;
+				INFOPLIST_FILE = BuddhaTimer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-9.BuddhaTimer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DD831BB1F88DAF9003BF129 /* Build configuration list for PBXProject "BuddhaTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DD831D01F88DAF9003BF129 /* Debug */,
+				1DD831D11F88DAF9003BF129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DD831D21F88DAF9003BF129 /* Build configuration list for PBXNativeTarget "BuddhaTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DD831D31F88DAF9003BF129 /* Debug */,
+				1DD831D41F88DAF9003BF129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DD831B81F88DAF9003BF129 /* Project object */;
+}
