@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3E5A221F8A471D00C41115 /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E5A211F8A471D00C41115 /* SetupController.swift */; };
+		1D3E5A241F8A50A200C41115 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3E5A231F8A50A200C41115 /* HealthKitManager.swift */; };
 		1D6634751F891A4F002D7B6D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6634741F891A4F002D7B6D /* HealthKit.framework */; };
 		1D6B2CC01F894D2D00930708 /* chime.aif in Resources */ = {isa = PBXBuildFile; fileRef = 1DD831D51F88FC13003BF129 /* chime.aif */; };
 		1DD831C41F88DAF9003BF129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD831C31F88DAF9003BF129 /* AppDelegate.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3E5A211F8A471D00C41115 /* SetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
+		1D3E5A231F8A50A200C41115 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1D6634731F891A2B002D7B6D /* BuddhaTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuddhaTimer.entitlements; sourceTree = "<group>"; };
 		1D6634741F891A4F002D7B6D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1D6B2CC21F89558500930708 /* buddha-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddha-120x120.png"; sourceTree = "<group>"; };
@@ -96,7 +100,9 @@
 				1DD831D51F88FC13003BF129 /* chime.aif */,
 				1DD831C31F88DAF9003BF129 /* AppDelegate.swift */,
 				1DD831C51F88DAF9003BF129 /* ViewController.swift */,
+				1D3E5A211F8A471D00C41115 /* SetupController.swift */,
 				1DD831C71F88DAF9003BF129 /* Main.storyboard */,
+				1D3E5A231F8A50A200C41115 /* HealthKitManager.swift */,
 				1DD831CA1F88DAF9003BF129 /* Assets.xcassets */,
 				1DD831CC1F88DAF9003BF129 /* LaunchScreen.storyboard */,
 				1DD831CF1F88DAF9003BF129 /* Info.plist */,
@@ -187,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D3E5A221F8A471D00C41115 /* SetupController.swift in Sources */,
 				1DD831C61F88DAF9003BF129 /* ViewController.swift in Sources */,
+				1D3E5A241F8A50A200C41115 /* HealthKitManager.swift in Sources */,
 				1DD831C41F88DAF9003BF129 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

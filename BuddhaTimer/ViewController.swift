@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 	var ExcessTimer = Timer()
 	var elapsedCounter = 0
 	var excessCounter = 0
+	let healthManager = HealthKitManager()
 
 //	var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
 	
@@ -134,6 +135,7 @@ class ViewController: UIViewController {
 			clearElapsedTimer()
 			startExcessTimer()
 			playSound()
+			saveMeditation()
 		}
 	}
 	
@@ -141,8 +143,21 @@ class ViewController: UIViewController {
 		excessCounter += 1
 		updateTimers()
 	}
-	
-	
+
+	func saveMeditation() {
+		let sec = UserDefaults.standard.integer(forKey: "lastElapsedTime")
+		healthManager.saveMeditation(seconds: sec) { (success: Bool, error: Error?) -> Void in
+			if success {
+				print("😀 Save meditation success")
+			} else {
+				print("😡 Failed save meditation")
+				if error != nil {
+					print(error!)
+				}
+			}
+		}
+	}
+
 	func playSound() {
 		NSLog("Fire!")
 		do {
@@ -171,20 +186,8 @@ class ViewController: UIViewController {
 		} else {
 			NSLog("audio file not found")
 		}
-//		let path = Bundle.main.path(forResource: "chime", ofType:"aif")!
-//		let url = URL(fileURLWithPath: path)
-//		do {
-//			let sound = try AVAudioPlayer(contentsOf: url)
-//			self.player = sound
-//			sound.numberOfLoops = 1
-//			sound.prepareToPlay()
-//			sound.play()
-//		} catch {
-//			print("error loading file")
-//		}
 	}
 	var audioPlayer:AVAudioPlayer!
-//	var player : AVAudioPlayer?
 	
 
 	
@@ -196,10 +199,22 @@ class ViewController: UIViewController {
 		
 		// get permanent data
 		elapsedCounter = UserDefaults.standard.integer(forKey: "lastElapsedTime")
-		
+
 		updateTimers()
+
+		// HealthKit Authorize
+		healthManager.authorizeHealthKit{ (success:Bool,  error:Error?) -> Void in
+			if success {
+				print("😀 Permission window success")
+			} else {
+				print("😡 Permission modal filed")
+				if error != nil {
+					print(error!)
+				}
+			}
+		}
 		
-		
+
 	}
 	
 	
