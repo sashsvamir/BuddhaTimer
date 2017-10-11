@@ -8,102 +8,177 @@
 
 import UIKit
 import Foundation
-import AVFoundation
-import AudioToolbox
 import UserNotifications
 
+
 class ViewController: UIViewController {
+
+	let healthManager = HealthKitManager()
+	let helper = Helper()
+
+	var timerElapsedActive = false
+	var timerExcessActive = false
 
 	var ElapsedTimer = Timer()
 	var ExcessTimer = Timer()
 	var elapsedCounter = 0
 	var excessCounter = 0
-	let healthManager = HealthKitManager()
 
-//	var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
+
 	
-	
+	@IBOutlet var startButton: UIBarButtonItem!
+	@IBOutlet var stopButton: UIBarButtonItem!
 	@IBOutlet var elapsedLabel: UILabel!
 	@IBOutlet var excessLabel: UILabel!
-	@IBOutlet var messageLabel: UILabel!
-	
+	@IBOutlet var plusMinButton: UIButton!
+	@IBOutlet var minusMinButton: UIButton!
+	@IBOutlet var plusSecButton: UIButton!
+	@IBOutlet var minusSecButton: UIButton!
+
+
 	@IBAction func startButton(sender: AnyObject) {
-		startElapsedTimer()
-		ExcessTimer.invalidate()
-		// prevent dim screen and sleep
-		UIApplication.shared.isIdleTimerDisabled = true
+		start()
 	}
-	@IBAction func pauseButton(sender: AnyObject) {
-		ElapsedTimer.invalidate()
-		ExcessTimer.invalidate()
-		// enables dim screen and sleep
-		UIApplication.shared.isIdleTimerDisabled = false
-	}
-	@IBAction func defaultsButton(sender: AnyObject) {
-		loadDefaults()
-	}
-	@IBAction func clearButton(sender: AnyObject) {
-		clearElapsedTimer()
+	@IBAction func stopButton(sender: AnyObject) {
+		stop()
 	}
 	@IBAction func plusMinButton(sender: AnyObject) {
+		if (timerExcessActive || timerElapsedActive) {
+			return
+		}
 		elapsedCounter += 60
-		updateTimers()
-	}
-	@IBAction func plusSecButton(sender: AnyObject) {
-		elapsedCounter += 1
-		updateTimers()
+		refreshTimers()
 	}
 	@IBAction func minusMinButton(sender: AnyObject) {
+		if (timerExcessActive || timerElapsedActive) {
+			return
+		}
 		if (elapsedCounter >= 60) {
 			elapsedCounter -= 60
-			updateTimers()
+			refreshTimers()
 		}
+	}
+	@IBAction func plusSecButton(sender: AnyObject) {
+		if (timerExcessActive || timerElapsedActive) {
+			return
+		}
+		elapsedCounter += 1
+		refreshTimers()
 	}
 	@IBAction func minusSecButton(sender: AnyObject) {
+		if (timerExcessActive || timerElapsedActive) {
+			return
+		}
 		if (elapsedCounter > 0) {
 			elapsedCounter -= 1
-			updateTimers()
+			refreshTimers()
 		}
 	}
 	
 	
-	
-//	func startBackgroundUsing() {
-//		backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-//			UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier!)
-//		})
-//	}
-	
-	func updateTimers() {
-		elapsedLabel.text = secondsToMinutes(seconds: elapsedCounter)
-		excessLabel.text = secondsToMinutes(seconds: excessCounter)
-	}
-	
-	func secondsToMinutes (seconds: Int) -> (String) {
-		let hour = seconds / 3600
-		let minutes = (seconds % 3600) / 60
-		let seconds = (seconds % 3600) % 60
-		return String(format:"%d:%02d:%02d", hour, minutes, seconds)
-	}
-	
-	func startElapsedTimer() {
-		messageLabel.text = "last timer is: " + secondsToMinutes(seconds: elapsedCounter)
-		
-		// save permanent data
-		UserDefaults.standard.set(elapsedCounter, forKey: "lastElapsedTime")
-		
-//		startBackgroundUsing()
-		
+	//var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
+	//func startBackgroundUsing() {
+	//	backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+	//		UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier!)
+	//	})
+	//}
+
+
+	/*
+	 * Нажали запуск тамера
+	 */
+	func start() {
+		if (timerExcessActive || timerElapsedActive) {
+			return
+		}
+
+		excessCounter = 0
+		refreshTimers()
+
+		setTimeButtonsStatus(status: false)
+		startButton.isEnabled = false
+		stopButton.isEnabled = true
+
+		helper.saveTime(value: elapsedCounter) // save data
+
 		ElapsedTimer = Timer.scheduledTimer(
 			timeInterval: 1,
 			target: self,
 			selector: #selector(self.updateElapsedCounter),
 			userInfo: nil,
 			repeats: true)
-		
+
+		// prevent dim screen and sleep
+		UIApplication.shared.isIdleTimerDisabled = true
+
+		timerElapsedActive = true
 	}
-	
-	func startExcessTimer() {
+
+
+	/*
+	 * Нажали стоп тамер
+	 */
+	func stop() {
+		if (!timerExcessActive && !timerElapsedActive) {
+			return
+		}
+
+		ElapsedTimer.invalidate()
+		ExcessTimer.invalidate()
+
+		// расчитваем время медитации
+		let total = helper.getTime() - elapsedCounter + excessCounter
+
+		// enables dim screen back
+		UIApplication.shared.isIdleTimerDisabled = false
+
+		// предложим сохранить общее время
+		requestSaveResult(total: total)
+
+		elapsedCounter = helper.getTime()
+		refreshTimers()
+
+		setTimeButtonsStatus(status: true)
+		startButton.isEnabled = true
+		stopButton.isEnabled = false
+
+		timerElapsedActive = false
+		timerExcessActive = false
+	}
+
+
+	private func refreshTimers() {
+		elapsedLabel.text = Helper().secondsToMinutes(seconds: elapsedCounter)
+		excessLabel.text = Helper().secondsToMinutes(seconds: excessCounter)
+	}
+
+	private func setTimeButtonsStatus(status: Bool) {
+		plusMinButton.isEnabled = status
+		minusMinButton.isEnabled = status
+		plusSecButton.isEnabled = status
+		minusSecButton.isEnabled = status
+	}
+
+
+	func updateElapsedCounter() {
+		elapsedCounter -= 1
+		refreshTimers()
+		if (elapsedCounter <= 0) {
+			print("🔥 Fire!")
+			stopElapsedTimer()
+			startExcessTimer()
+			helper.playSound()
+		}
+	}
+
+	private func stopElapsedTimer() {
+		timerElapsedActive = false
+		ElapsedTimer.invalidate()
+		refreshTimers()
+	}
+
+	private func startExcessTimer() {
+		timerExcessActive = true
 		ExcessTimer = Timer.scheduledTimer(
 			timeInterval: 1,
 			target: self,
@@ -111,84 +186,23 @@ class ViewController: UIViewController {
 			userInfo: nil,
 			repeats: true)
 	}
-	
-	func clearElapsedTimer() {
-		ElapsedTimer.invalidate()
-		elapsedCounter = 0
-		
-		ExcessTimer.invalidate()
-		excessCounter = 0
-		
-		updateTimers()
-	}
-	
-	func loadDefaults() {
-		clearElapsedTimer()
-		elapsedCounter = UserDefaults.standard.integer(forKey: "lastElapsedTime")
-		updateTimers()
-	}
-	
-	func updateElapsedCounter() {
-		elapsedCounter -= 1
-		updateTimers()
-		if (elapsedCounter <= 0) {
-			clearElapsedTimer()
-			startExcessTimer()
-			playSound()
-			saveMeditation()
-		}
-	}
-	
+
 	func updateExcessCounter() {
 		excessCounter += 1
-		updateTimers()
+		refreshTimers()
 	}
 
-	func saveMeditation() {
-		let sec = UserDefaults.standard.integer(forKey: "lastElapsedTime")
-		healthManager.saveMeditation(seconds: sec) { (success: Bool, error: Error?) -> Void in
-			if success {
-				print("😀 Save meditation success")
-			} else {
-				print("😡 Failed save meditation")
-				if error != nil {
-					print(error!)
-				}
-			}
-		}
-	}
 
-	func playSound() {
-		NSLog("Fire!")
-		do {
-//			print(AVAudioSession.sharedInstance().availableModes)
-//			print(AVAudioSession.sharedInstance().availableCategories)
-			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.duckOthers)
-		}
-		catch {
-			// report for an error
-			NSLog("Error play sound")
-		}
-//		AudioServicesPlayAlertSoundWithCompletion(1008, nil)
-		
-		
-		// Play sound
-		let audioFilePath = Bundle.main.path(forResource: "chime", ofType: "aif")
-		if audioFilePath != nil {
-			let audioFileUrl = URL.init(fileURLWithPath: audioFilePath!)
-			do {
-				try audioPlayer = AVAudioPlayer.init(contentsOf: audioFileUrl)
-				audioPlayer.play()
-			}
-			catch {
-				NSLog("Error audioPlayer.play() sound")
-			}
-		} else {
-			NSLog("audio file not found")
-		}
+
+
+	private func requestSaveResult(total: Int) {
+		// show Modal to saving result
+		let modalSave = storyboard?.instantiateViewController(withIdentifier: "ModalSave") as! ModalSaveController
+		modalSave.healthManager = healthManager
+		modalSave.result = total
+		modalSave.sender = self
+		present(modalSave, animated: true, completion: nil)
 	}
-	var audioPlayer:AVAudioPlayer!
-	
 
 	
 	
@@ -198,30 +212,29 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		// get permanent data
-		elapsedCounter = UserDefaults.standard.integer(forKey: "lastElapsedTime")
-
-		updateTimers()
+		elapsedCounter = helper.getTime()
+		refreshTimers()
 
 		// HealthKit Authorize
-		healthManager.authorizeHealthKit{ (success:Bool,  error:Error?) -> Void in
-			if success {
-				print("😀 Permission window success")
-			} else {
+		healthManager.requestAuthorize{ (success:Bool,  error:Error?) -> Void in
+			guard success else {
 				print("😡 Permission modal filed")
 				if error != nil {
-					print(error!)
+					print("Reason: \(error?.localizedDescription)")
 				}
+				return
 			}
+			print("😀 Permission window success")
 		}
-		
 
+//		let alert = UIAlertController(title: nil, message: "Message", preferredStyle: .alert)
+//		alert.addAction(UIAlertAction(title: "O.K.", style: .default, handler: nil))
+//		present(alert, animated: true, completion: nil)
 	}
-	
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
+
+
+
+
 
 
 }

@@ -72,17 +72,17 @@
                                     <action selector="plusSecButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4p1-CY-bKS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last time is: 00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-3k-XNJ">
-                                <rect key="frame" x="0.0" y="104" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efZ-R9-yRE">
                                 <rect key="frame" x="0.0" y="156" width="320" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Excess time is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZm-jr-1bk">
+                                <rect key="frame" x="0.0" y="127" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -98,43 +98,148 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="K6e-Wa-3gu"/>
-                        <barButtonItem title="HealthKit" id="kve-pp-8Ig">
-                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                            <connections>
-                                <segue destination="hYA-er-5Mt" kind="show" id="dGn-Fc-Oc1"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CyC-Hj-C1f"/>
                         <barButtonItem systemItem="pause" id="Kud-oN-guy">
                             <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                             <connections>
-                                <action selector="pauseButtonWithSender:" destination="BYZ-38-t0r" id="db7-3Q-JHd"/>
+                                <action selector="stopButtonWithSender:" destination="BYZ-38-t0r" id="ApJ-jS-wrY"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="wd8-WP-9Iy">
-                        <barButtonItem key="leftBarButtonItem" title="Defaults" id="yAM-v2-Kde">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="HealthKit" id="kve-pp-8Ig">
                             <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                             <connections>
-                                <action selector="defaultsButtonWithSender:" destination="BYZ-38-t0r" id="5xa-vo-8ZX"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Clear" id="a1c-Hc-gas">
-                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                            <connections>
-                                <action selector="clearButtonWithSender:" destination="BYZ-38-t0r" id="uHw-ui-gof"/>
+                                <segue destination="hYA-er-5Mt" kind="show" id="dGn-Fc-Oc1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="elapsedLabel" destination="uCX-tR-MET" id="gKP-E0-Qb4"/>
                         <outlet property="excessLabel" destination="efZ-R9-yRE" id="eE1-rM-f4E"/>
-                        <outlet property="messageLabel" destination="NbX-3k-XNJ" id="7vO-U1-8IK"/>
+                        <outlet property="minusMinButton" destination="nMi-qQ-J5b" id="vCM-ud-g7j"/>
+                        <outlet property="minusSecButton" destination="bad-EV-Q2J" id="Vl4-bm-D37"/>
+                        <outlet property="plusMinButton" destination="Uq9-5s-nEM" id="I5n-yx-Iz1"/>
+                        <outlet property="plusSecButton" destination="rEq-Ut-QZa" id="NrR-xF-dwT"/>
+                        <outlet property="startButton" destination="7jn-t6-199" id="F75-PW-Yqx"/>
+                        <outlet property="stopButton" destination="Kud-oN-guy" id="HEg-Vv-pGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1106.25" y="24.295774647887324"/>
+        </scene>
+        <!--Modal Save Controller-->
+        <scene sceneID="1U9-b9-b4l">
+            <objects>
+                <viewController storyboardIdentifier="ModalSave" id="TsH-Vs-ax2" customClass="ModalSaveController" customModule="BuddhaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jlo-x4-Jhp"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Tb-ah-AN0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLU-Ok-EJl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKs-2O-I9G">
+                                <rect key="frame" x="211" y="445" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="Y5d-K0-XuB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFN-iu-nws">
+                                <rect key="frame" x="54" y="445" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="d9g-Dx-4dV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save your result to HealthKit today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt8-3J-1LB">
+                                <rect key="frame" x="0.0" y="58" width="320" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcK-qo-tL9">
+                                <rect key="frame" x="0.0" y="188" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="48"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACr-qE-b3W">
+                                <rect key="frame" x="28" y="288" width="491" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">🔑 To save result, you must
+      allow access in HealthKit</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD7-2v-He3">
+                                <rect key="frame" x="137" y="158" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="plusMinButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="8ha-aE-hPa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPd-I0-cii">
+                                <rect key="frame" x="137" y="247" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="–"/>
+                                <connections>
+                                    <action selector="minusMinButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="RY9-ab-oig"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VF-Ws-YIY">
+                                <rect key="frame" x="204" y="158" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="plusSecButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="ggd-V9-leY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMZ-QR-CA1">
+                                <rect key="frame" x="204" y="247" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="–"/>
+                                <connections>
+                                    <action selector="minusSecButtonWithSender:" destination="TsH-Vs-ax2" eventType="touchUpInside" id="fNA-ac-hEw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2054379111842102" green="0.14661287006578946" blue="0.28890830592105265" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="XcK-qo-tL9" id="Yp3-32-NPb"/>
+                        <outlet property="saveButton" destination="KKs-2O-I9G" id="c5u-D2-yXL"/>
+                        <outlet property="warningLabel" destination="ACr-qE-b3W" id="0k2-w5-G0I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXp-G0-WQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1998.75" y="379.22535211267603"/>
         </scene>
         <!--Setup Controller-->
         <scene sceneID="9Td-MI-iLb">

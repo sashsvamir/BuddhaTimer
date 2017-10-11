@@ -12,75 +12,76 @@ import HealthKit
 
 class HealthKitManager: NSObject {
 
-	var available = false
-	var healthKitStore: HKHealthStore?
-	var hkType: HKCategoryType?
+	var healthKitStore: HKHealthStore = HKHealthStore()
+	var hkType: HKCategoryType = HKObjectType.categoryType(forIdentifier: .mindfulSession)!
 
 
-
-	override init() {
-		super.init()
-
-		// Just in case when app runnings on iPad...
-		if !(HKHealthStore.isHealthDataAvailable()) {
-			return
-		}
-
-		available = true
-		healthKitStore = HKHealthStore()
-		hkType = HKCategoryType.categoryType(forIdentifier: .mindfulSession)!
-	}
-
+	//	override init() {
+	//		super.init()
+	//
+	//	}
 
 
 	/**
-	 * @see: https://forums.developer.apple.com/thread/53844
+	 * Перечислим ошибки
 	 */
-	func authorizeHealthKit(completion: ((Bool, Error?) -> Void)!) {
+	enum HealthkitSetupError: LocalizedError {
+		case notAvailableOnDevice
+		case sharingDenied
 
-		if !(available) {
-			let msg = "HealthKit not available on this Device"
-			let error = NSError(domain: "99.BuddhaTimer", code: 2, userInfo: [NSLocalizedDescriptionKey:msg])
-			if(completion != nil) {
-				completion(false, error)
+		var errorDescription: String? {
+			switch self {
+				case .notAvailableOnDevice:
+					return "HealthKit not available on this Device"
+				case .sharingDenied:
+					return "Cant write meditation"
 			}
+		}
+	}
+
+
+	/**
+	 * Окно авторизации
+	 * @see: forums.developer.apple.com/thread/53844
+	 */
+	func requestAuthorize(completion: ((Bool, Error?) -> Void)!) {
+
+		guard HKHealthStore.isHealthDataAvailable() else {
+			completion(false, HealthkitSetupError.notAvailableOnDevice)
 			return
 		}
 
-		// State the health data types we want to read/write in HealthKit.
-		let hkTypesToWrite: Set = [hkType!]
+		// создаем набор данных которые будем писать в HealthKit
+		let hkTypesToWrite: Set = [hkType]
 
-		// Request authorization to read and/or write the specific data.
-		healthKitStore!.requestAuthorization(toShare: hkTypesToWrite, read: nil, completion: completion)
-
+		// запросим разрешение у пользователя
+		healthKitStore.requestAuthorization(toShare: hkTypesToWrite, read: nil, completion: completion)
 	}
 
 
-
-	func authorizationStatus() -> HKAuthorizationStatus {
-		return healthKitStore!.authorizationStatus(for: hkType!)
-	}
-
-
-
+	/**
+	 * Сохраним данные
+	 */
 	func saveMeditation(seconds:Int, endDate: Date = Date(), completion: ((Bool, Error?) -> Void)!) {
 
-		let authStatus: HKAuthorizationStatus = authorizationStatus()
-
-		if (authStatus != HKAuthorizationStatus.sharingAuthorized) {
-			if (completion != nil) {
-				let msg = "Cant write meditation"
-				let error = NSError(domain: "99.BuddhaTimer", code: authStatus.rawValue, userInfo: [NSLocalizedDescriptionKey:msg])
-				completion(false, error)
-			}
+		// узнаем есть ли доступ для записи данных
+		if !isAvailable() {
+			completion(false, HealthkitSetupError.sharingDenied)
 			return
 		}
 
+		// сохраняем данные
 		let startDate = Date.init(timeInterval: TimeInterval(-seconds), since: endDate)
-		let mindfulSample = HKCategorySample(type: hkType!, value: 0, start: startDate, end: endDate)
-		healthKitStore!.save(mindfulSample, withCompletion: completion)
+		let mindfulSample = HKCategorySample(type: hkType, value: 0, start: startDate, end: endDate)
+		healthKitStore.save(mindfulSample, withCompletion: completion)
 	}
 
 
+	/**
+	 * Узнаем есть ли доступ для записи данных
+	 */
+	func isAvailable() -> Bool {
+		return healthKitStore.authorizationStatus(for: hkType) == HKAuthorizationStatus.sharingAuthorized
+	}
 
 }

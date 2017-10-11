@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuddhaTimer/HealthKitManager.swift"
-            timestampString = "529228474.077213"
+            filePath = "BuddhaTimer/ViewController.swift"
+            timestampString = "529352949.690325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "init()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "stop()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,61 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuddhaTimer/ViewController.swift"
-            timestampString = "529229513.300441"
+            timestampString = "529352949.690325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "saveMeditation()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "start()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuddhaTimer/ViewController.swift"
-            timestampString = "529229516.427831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "saveMeditation()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BuddhaTimer.ViewController.saveMeditation () -&gt; ()"
-                  moduleName = "BuddhaTimer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleyrsrglts/Downloads/swift/BuddhaTimer/BuddhaTimer/ViewController.swift"
-                  timestampString = "529231306.508954"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
-                  offsetFromSymbolStart = "348">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BuddhaTimer.ViewController.(saveMeditation () -&gt; ()).(closure #1)"
-                  moduleName = "BuddhaTimer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleyrsrglts/Downloads/swift/BuddhaTimer/BuddhaTimer/ViewController.swift"
-                  timestampString = "529231306.511236"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

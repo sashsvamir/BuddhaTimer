@@ -27,10 +27,10 @@ class SetupController: UIViewController {
 
 		getHealthKitPermission()
 	}
-	
+
 	
 	func getHealthKitPermission() {
-		healthManager.authorizeHealthKit { (success:Bool,  error:Error?) -> Void in
+		healthManager.requestAuthorize { (success:Bool,  error:Error?) -> Void in
 			if success {
 				print("😀 Permission window success")
 			} else {
