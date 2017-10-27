@@ -57,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D2278FD1F9350ED009E4C99 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				1D3E5A231F8A50A200C41115 /* HealthKitManager.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 		1D6634701F891A2B002D7B6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +108,7 @@
 		1DD831C21F88DAF9003BF129 /* BuddhaTimer */ = {
 			isa = PBXGroup;
 			children = (
+				1D2278FD1F9350ED009E4C99 /* models */,
 				1D6634731F891A2B002D7B6D /* BuddhaTimer.entitlements */,
 				1DD831D51F88FC13003BF129 /* chime.aif */,
 				1D346B641F8D252A002AA14E /* Helper.swift */,
@@ -108,7 +117,6 @@
 				1D3E5A211F8A471D00C41115 /* SetupController.swift */,
 				1DD831C71F88DAF9003BF129 /* Main.storyboard */,
 				1D346B621F8D1751002AA14E /* ModalSaveController.swift */,
-				1D3E5A231F8A50A200C41115 /* HealthKitManager.swift */,
 				1DD831CA1F88DAF9003BF129 /* Assets.xcassets */,
 				1DD831CC1F88DAF9003BF129 /* LaunchScreen.storyboard */,
 				1DD831CF1F88DAF9003BF129 /* Info.plist */,
