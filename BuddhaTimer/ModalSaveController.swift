@@ -14,6 +14,7 @@ class ModalSaveController: UIViewController {
 
 	private var permanentResult: Int!
 	var result: Int?
+	var startDate: Date?
 	var healthManager: HealthKitManager?
 	var sender: UIViewController?
 
@@ -21,6 +22,7 @@ class ModalSaveController: UIViewController {
 	@IBOutlet var resultLabel: UILabel!
 	@IBOutlet var saveButton: UIButton!
 	@IBOutlet var warningLabel: UILabel!
+	@IBOutlet var startDateLabel: UILabel!
 
 	@IBAction func saveButton(sender: AnyObject) {
 		saveResult()
@@ -46,8 +48,10 @@ class ModalSaveController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		startDate = Date.init(timeInterval: TimeInterval(-result!), since: Date())
+
 		permanentResult = result!
-		resfreshTimer()
+		resfreshTimers()
 
 		// если нет доступа к записи данных в HealthKit
 		if (!healthManager!.isAvailable()) {
@@ -57,8 +61,9 @@ class ModalSaveController: UIViewController {
 
 
 	private func saveResult() {
-		let sec = result!
-		healthManager!.saveMeditation(seconds: sec) { (success: Bool, error: Error?) -> Void in
+		let finishDate = Date.init(timeInterval: TimeInterval(result!), since: startDate!)
+		healthManager!.saveMeditation(seconds: result!, endDate: finishDate) {
+			(success: Bool, error: Error?) -> Void in
 			if !success {
 				print("😡 Failed save meditation")
 				if error != nil {
@@ -72,37 +77,41 @@ class ModalSaveController: UIViewController {
 		}
 	}
 
-	func resfreshTimer() {
+	func resfreshTimers() {
 		let text = Helper().secondsToMinutes(seconds: result!)
-		resultLabel.text? = String(text)
+		resultLabel.text = String(text)
+
+		let formatter = DateFormatter()
+		formatter.dateFormat = "HH:mm"
+		startDateLabel.text = formatter.string(from: startDate!)
 	}
 
 	func plusMin() {
 		if (result! <= permanentResult - 60) {
 			result! += 60
 		}
-		resfreshTimer()
+		resfreshTimers()
 	}
 
 	func minusMin() {
 		if (result! > 60) {
 			result! -= 60
 		}
-		resfreshTimer()
+		resfreshTimers()
 	}
 
 	func plusSec() {
 		if (result! < permanentResult) {
 			result! += 1
 		}
-		resfreshTimer()
+		resfreshTimers()
 	}
 
 	func minusSec() {
 		if (result! > 1) {
 			result! -= 1
 		}
-		resfreshTimer()
+		resfreshTimers()
 	}
 
 
