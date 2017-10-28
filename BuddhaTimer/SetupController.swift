@@ -12,34 +12,29 @@ import Foundation
 
 class SetupController: UIViewController {
 
-	let healthManager = HealthKitManager()
-	
-	@IBAction func authorizeButton(sender: AnyObject) {}
+	let helper = Helper()
 
 
-
-//	override func viewDidLoad() {
-//		super.viewDidLoad()
-//	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		// We cannot access the user's HealthKit data without specific permission.
-
-		getHealthKitPermission()
+	@IBAction func playSoundButton(sender: AnyObject) {
+		playSound()
 	}
 
+
+
+	/*
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
+	*/
+
+
+	/*
+	override func viewWillAppear(_ animated: Bool) {
+	}*/
+
 	
-	func getHealthKitPermission() {
-		healthManager.requestAuthorize { (success:Bool,  error:Error?) -> Void in
-			if success {
-				print("😀 Permission window success")
-			} else {
-				print("😡 Permission modal filed")
-				if error != nil {
-					print(error!)
-				}
-			}
-		}
+	func playSound() {
+		helper.playSound()
 	}
 	
 
